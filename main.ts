@@ -24,7 +24,7 @@ function getCurrentTime(): string {
     const month: string = String(now.getMonth() + 1).padStart(2, '0');
     const year: number = now.getFullYear();
 
-    return `${hours}:${minutes}:${seconds} ${day}:${month}:${year}`;
+    return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
 }
 
 function readHTMLFile(path: string, callback: (err: Error | null, html?: string) => void): void {
