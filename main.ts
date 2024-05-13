@@ -2,7 +2,18 @@ import nodemailer from 'nodemailer';
 import handlebars from 'handlebars';
 import fs from 'fs';
 
-const subject: string = 'TEST MAIL SYSTEM';
+const subject = 'TEST MAIL SYSTEM';
+
+interface EmailPayload {
+    email: string;
+    name: string;
+}
+
+const payload: EmailPayload[] = [
+    { email: 'kaydenleefale@gmail.com', name: 'John Doe' },
+    { email: 'kaydenleefale@gmail.com', name: 'Jane Smith' },
+    { email: 'kaydenleefale@gmail.com', name: 'Alice Johnson' },
+];
 
 function getCurrentTime(): string {
     const now: Date = new Date();
@@ -15,17 +26,6 @@ function getCurrentTime(): string {
 
     return `${hours}:${minutes}:${seconds} ${day}:${month}:${year}`;
 }
-
-interface EmailPayload {
-    email: string;
-    name: string;
-}
-
-const payload: EmailPayload[] = [
-    { email: 'kaydenleefale@gmail.com', name: 'John Doe' },
-    { email: 'kaydenleefale@gmail.com', name: 'Jane Smith' },
-    { email: 'kaydenleefale@gmail.com', name: 'Alice Johnson' },
-];
 
 function readHTMLFile(path: string, callback: (err: Error | null, html?: string) => void): void {
     fs.readFile(path, { encoding: 'utf-8' }, (err, html) => {
