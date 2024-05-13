@@ -5,14 +5,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Kayden Lee",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "handlebars": "^4.7.8",
     "nodemailer": "^6.9.13"
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leekayden/mail.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leekayden/mail/issues"
+  },
+  "homepage": "https://github.com/leekayden/mail#readme",
+  "description": ""
 }
