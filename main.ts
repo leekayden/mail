@@ -14,12 +14,20 @@ const payload: PayloadSchema[] = [
 	{ email: 'kaydenleefale@gmail.com', name: 'Kayden Lee' },
 ];
 
-// function getVariableNames(data: PayloadSchema[]): string[] {
-//     if (data.length > 0) {
-//         return Object.keys(data[0]);
-//     }
-//     return [];
-// }
+type ReplacementsSchema = {
+	[key: string]: string | number | boolean;
+};
+
+function getVariableNames(data: PayloadSchema[] | any): string[] {
+	if (data.length > 0) {
+		return Object.keys(data[0]);
+	}
+	return [];
+}
+
+function getUserVariableNames(obj: Record<string, any>): string[] {
+	return Object.keys(obj);
+}
 
 function getCurrentTime(): string {
 	const now: Date = new Date();
@@ -75,13 +83,6 @@ readHTMLFile(__dirname + '/template.html', (err, html, variables) => {
 		return;
 	}
 	console.log('Template variables:', variables);
-	// console.log('Your variables:', getVariableNames(payload));
-
-	let answer: string = readlineSync.question('Continue? [Y/n] >_');
-	if (['no', 'n'].includes(answer.toLowerCase())) {
-		console.log('Exiting...');
-		return;
-	}
 
 	const template = handlebars.compile(html);
 
@@ -89,6 +90,12 @@ readHTMLFile(__dirname + '/template.html', (err, html, variables) => {
 		const replacements = {
 			username: user.name,
 		};
+		console.log('Your variables:', getUserVariableNames(replacements));
+		let answer: string = readlineSync.question('Continue? [Y/n] >_');
+		if (['no', 'n'].includes(answer.toLowerCase())) {
+			console.log('Exiting...');
+			return;
+		}
 		const htmlToSend = template(replacements);
 		const mailOptions = {
 			from: 'Kayden Lee <kayden@cloudservetechcentral.com>',
@@ -101,7 +108,9 @@ readHTMLFile(__dirname + '/template.html', (err, html, variables) => {
 				console.error(error);
 			} else {
 				console.log(
-					`${getCurrentTime()} [OK] Sent to ${user.name} <${user.email}>: ${info.response}`
+					`${getCurrentTime()} [OK] Sent to ${user.name} <${user.email}>: ${
+						info.response
+					}`
 				);
 			}
 		});
