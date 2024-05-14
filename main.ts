@@ -14,10 +14,6 @@ const payload: PayloadSchema[] = [
 	{ email: 'kaydenleefale@gmail.com', name: 'Kayden Lee' },
 ];
 
-type ReplacementsSchema = {
-	[key: string]: string | number | boolean;
-};
-
 function getVariableNames(data: PayloadSchema[] | any): string[] {
 	if (data.length > 0) {
 		return Object.keys(data[0]);
