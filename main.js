@@ -38,7 +38,7 @@ var transporter = nodemailer.createTransport({
 	secure: true,
 	auth: {
 		user: 'no-reply@cloudservetechcentral.com',
-		pass: 'UmF30bLij7Omxdb7',
+		pass: 'i9h.7uJTGwAj=1zR!_+4bJX(,61?L/S*VycyZ]ZM=29gi09e-K',
 	},
 	tls: { servername: 'w123.sgcloudhosting.com' },
 });

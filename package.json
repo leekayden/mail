@@ -10,10 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "handlebars": "^4.7.8",
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.13",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {
     "@types/nodemailer": "^6.4.15",
+    "@types/readline-sync": "^1.4.8",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2"
   },
