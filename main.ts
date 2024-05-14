@@ -12,7 +12,6 @@ interface PayloadSchema {
 
 const payload: PayloadSchema[] = [
 	{ email: 'kaydenleefale@gmail.com', name: 'Kayden Lee' },
-	{ email: 'kaydenleefale@gmail.com', name: 'Ashley Goh' },
 ];
 
 // function getVariableNames(data: PayloadSchema[]): string[] {
