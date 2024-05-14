@@ -65,9 +65,10 @@ const transporter = nodemailer.createTransport({
 	tls: { servername: 'w123.sgcloudhosting.com' },
 });
 
-let showPayload: string = readlineSync.question('Show payload? [Y/n] >_')
+let showPayload: string = readlineSync.question('Show payload? [Y/n] >_');
 if (!['no', 'n'].includes(showPayload.toLowerCase())) {
-    console.table(payload);
+	console.log(`Payload contains ${payload.length} entries.`);
+	console.table(payload);
 }
 
 readHTMLFile(__dirname + '/template.html', (err, html, variables) => {
@@ -102,7 +103,7 @@ readHTMLFile(__dirname + '/template.html', (err, html, variables) => {
 				console.error(error);
 			} else {
 				console.log(
-					`${getCurrentTime()} [OK] Sent to ${user.email}: ${info.response}`
+					`${getCurrentTime()} [OK] Sent to ${user.name} <${user.email}>: ${info.response}`
 				);
 			}
 		});
