@@ -5,16 +5,23 @@ import fs from 'fs';
 
 const subject = 'TEST MAIL SYSTEM';
 
-interface EmailPayload {
+interface PayloadSchema {
 	email: string;
 	name: string;
 }
 
-const payload: EmailPayload[] = [
+const payload: PayloadSchema[] = [
 	{ email: 'kaydenleefale@gmail.com', name: 'John Doe' },
 	{ email: 'kaydenleefale@gmail.com', name: 'Jane Smith' },
 	{ email: 'kaydenleefale@gmail.com', name: 'Alice Johnson' },
 ];
+
+// function getVariableNames(data: PayloadSchema[]): string[] {
+//     if (data.length > 0) {
+//         return Object.keys(data[0]);
+//     }
+//     return [];
+// }
 
 function getCurrentTime(): string {
 	const now: Date = new Date();
@@ -58,12 +65,18 @@ const transporter = nodemailer.createTransport({
 	tls: { servername: 'w123.sgcloudhosting.com' },
 });
 
+let showPayload: string = readlineSync.question('Show payload? [Y/n] >_')
+if (!['no', 'n'].includes(showPayload.toLowerCase())) {
+    console.table(payload);
+}
+
 readHTMLFile(__dirname + '/template.html', (err, html, variables) => {
 	if (err) {
 		console.error('[FILE ERR]', err);
 		return;
 	}
 	console.log('Template variables:', variables);
+	// console.log('Your variables:', getVariableNames(payload));
 
 	let answer: string = readlineSync.question('Continue? [Y/n] >_');
 	if (['no', 'n'].includes(answer.toLowerCase())) {
