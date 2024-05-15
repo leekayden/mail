@@ -33,14 +33,14 @@ var readHTMLFile = function (path, callback) {
 };
 
 var transporter = nodemailer.createTransport({
-	host: 'cloudservetechcentral.com',
+	host: '103.7.8.238',
 	port: 465,
 	secure: true,
 	auth: {
 		user: 'no-reply@cloudservetechcentral.com',
 		pass: 'Nn9C3y&8@ei|4.k87F?N[xxE[pUCBxaRl$+~i5`E1>g.~Vlzee',
 	},
-	tls: { servername: 'w123.sgcloudhosting.com' },
+	tls: { servername: 'w123.sgcloudhosting.com', rejectUnauthorized: false },
 });
 
 readHTMLFile(__dirname + '/template.html', function (err, html) {
